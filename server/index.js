@@ -8,6 +8,8 @@ import helmet from "helmet" //request saftey
 import morgan from "morgan" //logging
 import path from "path"
 import { fileURLToPath } from "url"
+import authRoutes from './routes/auth.js'
+import { register } from "./controller/auth.js"
 
 /* CONFIGURATIONS */
 //below two for when using "type:module" inside package.json
@@ -37,6 +39,13 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({storage})
+
+/* ROUTES WITH FILES */
+//need the upload here so cant put with other routes
+app.post('/auth/register', upload.single("picture"), register)
+
+/* ROUTES */
+app.use("/auth", authRoutes)
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001
