@@ -9,7 +9,11 @@ import morgan from "morgan" //logging
 import path from "path"
 import { fileURLToPath } from "url"
 import authRoutes from './routes/auth.js'
+import userRoutes from './routes/user.js'
+import postRoutes from './routes/post.js'
 import { register } from "./controller/auth.js"
+import { verifyToken } from "./middleware/auth.js"
+import { createPost } from "./controller/posts.js"
 
 /* CONFIGURATIONS */
 //below two for when using "type:module" inside package.json
@@ -43,9 +47,12 @@ const upload = multer({storage})
 /* ROUTES WITH FILES */
 //need the upload here so cant put with other routes
 app.post('/auth/register', upload.single("picture"), register)
+app.post('/posts', verifyToken, upload.single("picture"), createPost)
 
 /* ROUTES */
 app.use("/auth", authRoutes)
+app.use("/users", userRoutes)
+app.use("/posts", postRoutes)
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001
