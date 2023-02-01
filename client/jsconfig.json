@@ -1,7 +1,6 @@
 {
-    // with the below two options, it helps in imports, like start from src/...
     "compilerOptions": {
-        "baseUrl": "src"
+      "baseUrl": "src"
     },
     "include": ["src"]
 }
