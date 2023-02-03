@@ -77,7 +77,7 @@ const PostWidget = ({
                             {isLiked ? (
                                 <FavoriteOutlined sx={{color: primary}}/>
                             ) : (
-                                <FavoriteBorderOutlined />
+                                <FavoriteBorderOutlined  />
                             )}
                         </IconButton>
                         <Typography>{likeCount}</Typography>

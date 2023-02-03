@@ -52,7 +52,7 @@ const ProfilePage = () => {
         >
           <MyPostWidget picturePath={user.picturePath}/>
           <Box m="2rem 0"/>
-          {/* <PostsWidget userId={userId}/> */}
+          <PostsWidget userId={userId}/>
         </Box>
       </Box>
     </Box>
